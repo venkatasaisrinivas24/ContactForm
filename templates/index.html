@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- Flash messages (for success/error feedback) -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-container">
+      {% for category, message in messages %}
+        <div class="{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<!-- Main Header -->
+<header>
+  <h1>Get In Touch With Us Today</h1>
+</header>
+
+<!-- Info Cards Section -->
+<div class="info-cards">
+  <div class="card">
+    <h2>Address</h2>
+    <p>Suite No. 106, Marjorie Trinity Corporates,<br>Hyderabad 500072</p>
+  </div>
+  <div class="card">
+    <h2>Call Us</h2>
+    <p>+91 9984628505</p>
+  </div>
+  <div class="card">
+    <h2>Email Us</h2>
+    <p>neah@ealkay.com</p>
+  </div>
+</div>
+
+<!-- Map & Form Section -->
+<div class="contact-section">
+  <!-- Left Column: Google Map -->
+  <div class="map-container">
+    <!-- Replace src with your actual map embed if desired -->
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.906653192092!2d78.38935351552974!3d17.45151870543966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93bd3c57a73b%3A0xc1c33666d30dc211!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1693555176955!5m2!1sen!2sin"
+      width="100%"
+      height="550"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <!-- Right Column: Contact Form -->
+  <div class="form-container">
+    <form id="contactForm" method="POST" action="/">
+      <div class="form-group">
+        <label for="full_name">Your Name</label>
+        <!-- Keeping the same name/id as your Flask code -->
+        <input type="text" id="full_name" name="full_name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email_address">Your Email</label>
+        <!-- Keeping the same name/id as your Flask code -->
+        <input type="email" id="email_address" name="email_address" required>
+      </div>
+
+      <div class="form-group">
+        <label for="contact_number">Your Mobile Number</label>
+        <!-- Keeping the same name/id as your Flask code -->
+        <input type="tel" id="contact_number" name="contact_number" pattern="[0-9]{10}" placeholder="e.g., 1234567890" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <!-- Keeping the same name/id as your Flask code -->
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+  </div>
+</div>
+
+<!-- Optional: Additional client-side validation -->
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+      var fullName = document.getElementById('full_name').value.trim();
+      var email = document.getElementById('email_address').value.trim();
+      var contact = document.getElementById('contact_number').value.trim();
+      var message = document.getElementById('message').value.trim();
+
+      if(!fullName || !email || !contact || !message){
+          e.preventDefault();
+          alert('Please fill out all required fields.');
+      }
+  });
+</script>
+
+</body>
+</html>

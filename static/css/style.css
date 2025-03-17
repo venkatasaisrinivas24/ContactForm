@@ -1,0 +1,135 @@
+/* General Reset & Body */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+  }
+  
+  /* Flash Messages */
+  .flash-container {
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 0 20px;
+  }
+  .flash-container .success {
+    color: #3c763d;
+    margin-bottom: 10px;
+  }
+  .flash-container .error {
+    color: #a94442;
+    margin-bottom: 10px;
+  }
+  
+  /* Header Section */
+  header {
+    text-align: center;
+    padding: 30px 20px;
+    background: #fff;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  /* Info Cards Section */
+  .info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+  }
+  
+  .card {
+    background: #fff;
+    flex: 1 1 250px;
+    min-width: 250px;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .card h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  .card p {
+    color: #666;
+  }
+  
+  /* Contact Section: Map + Form Side by Side */
+  .contact-section {
+    display: flex;
+    flex-wrap: wrap; /* for responsiveness */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+    padding: 0 20px 40px;
+  }
+  
+  .map-container {
+    flex: 1 1 400px;
+    /* min-width: 300px; */
+    
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .form-container {
+    flex: 1 1 400px;
+    min-width: 300px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Form Styles */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .btn:hover {
+    background: #0056b3;
+  }
+  
