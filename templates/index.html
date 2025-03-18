@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us</title>
-  <!-- Link to external CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -19,7 +19,6 @@
   {% endif %}
 {% endwith %}
 
-<!-- Main Header -->
 <header>
   <h1>Get In Touch With Us Today</h1>
 </header>
@@ -42,9 +41,7 @@
 
 <!-- Map & Form Section -->
 <div class="contact-section">
-  <!-- Left Column: Google Map -->
   <div class="map-container">
-    <!-- Replace src with your actual map embed if desired -->
     <iframe 
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.906653192092!2d78.38935351552974!3d17.45151870543966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93bd3c57a73b%3A0xc1c33666d30dc211!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1693555176955!5m2!1sen!2sin"
       width="100%"
@@ -56,30 +53,36 @@
     </iframe>
   </div>
 
-  <!-- Right Column: Contact Form -->
   <div class="form-container">
     <form id="contactForm" method="POST" action="/">
       <div class="form-group">
         <label for="full_name">Your Name</label>
-        <!-- Keeping the same name/id as your Flask code -->
         <input type="text" id="full_name" name="full_name" required>
       </div>
 
       <div class="form-group">
         <label for="email_address">Your Email</label>
-        <!-- Keeping the same name/id as your Flask code -->
         <input type="email" id="email_address" name="email_address" required>
       </div>
 
       <div class="form-group">
         <label for="contact_number">Your Mobile Number</label>
-        <!-- Keeping the same name/id as your Flask code -->
-        <input type="tel" id="contact_number" name="contact_number" pattern="[0-9]{10}" placeholder="e.g., 1234567890" required>
+        <div class="phone-input">
+          <select id="country_code" name="country_code">
+              <option value="+91" data-length="10">🇮🇳 +91 (India)</option>
+              <option value="+1" data-length="10">🇺🇸 +1 (USA)</option>
+              <option value="+44" data-length="10">🇬🇧 +44 (UK)</option>
+              <option value="+61" data-length="9">🇦🇺 +61 (Australia)</option>
+              <option value="+81" data-length="10">🇯🇵 +81 (Japan)</option>
+              <option value="+971" data-length="9">🇦🇪 +971 (UAE)</option>
+              <option value="+256" data-length="9">🇦🇪 +256 (UGD)</option>
+          </select>
+          <input type="tel" id="contact_number" name="contact_number" placeholder="Enter phone number" required>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="message">Message</label>
-        <!-- Keeping the same name/id as your Flask code -->
         <textarea id="message" name="message" rows="5" required></textarea>
       </div>
 
@@ -88,19 +91,27 @@
   </div>
 </div>
 
-<!-- Optional: Additional client-side validation -->
+<!-- JavaScript for dynamic phone validation -->
 <script>
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-      var fullName = document.getElementById('full_name').value.trim();
-      var email = document.getElementById('email_address').value.trim();
-      var contact = document.getElementById('contact_number').value.trim();
-      var message = document.getElementById('message').value.trim();
+document.getElementById("country_code").addEventListener("change", function () {
+    var selectedOption = this.options[this.selectedIndex];
+    var phoneInput = document.getElementById("contact_number");
 
-      if(!fullName || !email || !contact || !message){
-          e.preventDefault();
-          alert('Please fill out all required fields.');
-      }
-  });
+    var phoneLength = selectedOption.getAttribute("data-length");
+    phoneInput.placeholder = "Enter " + phoneLength + " digit number";
+    phoneInput.pattern = `\\d{${phoneLength}}`; // Enforces correct digit length
+});
+
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+    var phoneInput = document.getElementById("contact_number");
+    var selectedCountry = document.getElementById("country_code").value;
+    var phoneLength = document.getElementById("country_code").options[document.getElementById("country_code").selectedIndex].getAttribute("data-length");
+    
+    if (!phoneInput.value.match(new RegExp(`^\\d{${phoneLength}}$`))) {
+        e.preventDefault();
+        alert(`Please enter a valid ${phoneLength}-digit phone number.`);
+    }
+});
 </script>
 
 </body>

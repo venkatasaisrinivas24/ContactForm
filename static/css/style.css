@@ -132,4 +132,156 @@
   .btn:hover {
     background: #0056b3;
   }
-  
+  .flash-container {
+    max-width: 600px;
+    margin: 10px auto;
+    text-align: center;
+    position: relative;
+}
+
+.flash-message {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: opacity 1s ease-out;
+}
+
+.flash-message.success {
+    background: #dff0d8;
+    color: #3c763d;
+    border-left: 5px solid #3c763d;
+}
+
+.flash-message.error {
+    background: #f8d7da;
+    color: #a94442;
+    border-left: 5px solid #a94442;
+}
+
+.success-icon {
+    font-size: 20px;
+    color: #3c763d;
+    animation: scaleUp 0.5s ease-in-out;
+}
+
+@keyframes scaleUp {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+  /* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
+
+/* Form Container */
+.form-container {
+  max-width: 600px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin: auto;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Phone Input (Dropdown + Number) */
+.phone-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Country Code Dropdown */
+#country_code {
+  width: 120px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none; /* Hides default dropdown arrow */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="%23666" d="M7 10l5 5 5-5H7z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+/* Dropdown Hover & Focus */
+#country_code:hover,
+#country_code:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Input Field for Phone Number */
+#contact_number {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Focus Styles for Input */
+#contact_number:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Button Styling */
+.btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .phone-input {
+      flex-direction: column;
+      gap: 5px;
+  }
+
+  #country_code {
+      width: 100%;
+  }
+}
